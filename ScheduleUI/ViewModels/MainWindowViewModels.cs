@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ScheduleUI.Models;
+using Bitlush;
+using System.Collections.Generic;
 
 namespace ScheduleUI.ViewModels
 {
@@ -10,8 +12,8 @@ namespace ScheduleUI.ViewModels
     {
         private readonly BackgroundModel modelBackground = new();
         private readonly ScheduleModel modelSchedule = new();
-
-        private ICommand buttonCommand;
+       
+        private readonly ICommand buttonCommand;
 
         public static event EventHandler ButtonClicked;
 
@@ -27,15 +29,18 @@ namespace ScheduleUI.ViewModels
             }
         }
 
-        private Grid scheduleGrid;
+        private VirtualCanvasDemo.VirtualizedCanvas virtualizedCanvasContent;
 
-        public Grid ScheduleGrid
+        public VirtualCanvasDemo.VirtualizedCanvas VirtualizedCanvasContent
         {
-            get { return scheduleGrid; }
+            get { return virtualizedCanvasContent; }
             set
             {
-                scheduleGrid = value;
-                OnPropertyChanged(nameof(ScheduleGrid));
+                if (virtualizedCanvasContent != value)
+                {
+                    virtualizedCanvasContent = value;
+                    OnPropertyChanged(nameof(VirtualizedCanvasContent));
+                }
             }
         }
 
@@ -97,35 +102,37 @@ namespace ScheduleUI.ViewModels
             ButtonClicked?.Invoke(this, EventArgs.Empty);
             GenerateSchedule();
         }
-
+        public VirtualCanvasDemo.VirtualizedCanvas virtualizedCanvas;
         public void GenerateSchedule()
         {
-            if (ScheduleGrid != null)
-            {
-                ScheduleGrid.Children.Clear();
-            }
 
             if (BackgroundGrid != null)
             {
                 BackgroundGrid.Children.Clear();
             }
 
-            int layer = 0;
             string completed = null;
             string pending = null;
             string disabled = null;
 
-            ScheduleGrid = modelSchedule.Start(ref layer, ref completed, ref pending, ref disabled);
-            PrintCountsByType(completed, pending, disabled);
-            DrawBack(layer);
+            VirtualCanvasDemo.VirtualizedCanvas virtualizedCanvas = new();
+
+            modelSchedule.CreateGrid(virtualizedCanvas);
+
+            modelSchedule.NumberOfTypes(ref pending, ref disabled, ref completed);
+            PrintNumberOfTypes(completed, pending, disabled);
+           
+            DrawGrid(modelSchedule.Layer, virtualizedCanvas);
+            VirtualizedCanvasContent = virtualizedCanvas;
         }
 
-        public void DrawBack(int layer)
+        public void DrawGrid(int layer, VirtualCanvasDemo.VirtualizedCanvas virtualizedCanvas)
         {
-            BackgroundGrid = modelBackground.DrawBackground(layer);
+            BackgroundGrid = modelBackground.DrawBackground(36);
+            virtualizedCanvas.CreateCanvas(modelSchedule.FindMaxX(), layer * ConfigConstants.RowHeight);
         }
 
-        public void PrintCountsByType(string completed, string pending, string disabled)
+        public void PrintNumberOfTypes(string completed, string pending, string disabled)
         {
             Completed = completed;
             Pending = pending;

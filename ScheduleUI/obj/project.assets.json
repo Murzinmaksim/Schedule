@@ -2,6 +2,32 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "Prevu.LiveCharts.Wpf.NetCore3/0.9.9": {
+        "type": "package",
+        "dependencies": {
+          "System.Data.DataSetExtensions": "4.5.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/LiveCharts.Wpf.dll": {},
+          "lib/netcoreapp3.1/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/LiveCharts.Wpf.dll": {},
+          "lib/netcoreapp3.1/LiveCharts.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "System.Data.DataSetExtensions/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Data.DataSetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Data.DataSetExtensions.dll": {}
+        }
+      },
       "Bitlush.AvlTree/1.0.0": {
         "type": "project",
         "compile": {
@@ -14,6 +40,42 @@
     }
   },
   "libraries": {
+    "Prevu.LiveCharts.Wpf.NetCore3/0.9.9": {
+      "sha512": "uTH7aRBHJh8BXX60tkgLDw+oeTCTYSdpwqF0dVR3BAW0l6rA6+F37cqgT8WAZ444OWMxGNgVeCKg8WA/ZPLr3g==",
+      "type": "package",
+      "path": "prevu.livecharts.wpf.netcore3/0.9.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/LiveCharts.Wpf.dll",
+        "lib/net40/LiveCharts.dll",
+        "lib/net40/LiveCharts.xml",
+        "lib/netcoreapp3.1/LiveCharts.Wpf.dll",
+        "lib/netcoreapp3.1/LiveCharts.dll",
+        "lib/netcoreapp3.1/LiveCharts.xml",
+        "prevu.livecharts.wpf.netcore3.0.9.9.nupkg.sha512",
+        "prevu.livecharts.wpf.netcore3.nuspec"
+      ]
+    },
+    "System.Data.DataSetExtensions/4.5.0": {
+      "sha512": "221clPs1445HkTBZPL+K9sDBdJRB8UN8rgjO3ztB0CQ26z//fmJXtlsr6whGatscsKGBrhJl5bwJuKSA8mwFOw==",
+      "type": "package",
+      "path": "system.data.datasetextensions/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net45/_._",
+        "lib/netstandard2.0/System.Data.DataSetExtensions.dll",
+        "ref/net45/_._",
+        "ref/netstandard2.0/System.Data.DataSetExtensions.dll",
+        "system.data.datasetextensions.4.5.0.nupkg.sha512",
+        "system.data.datasetextensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "Bitlush.AvlTree/1.0.0": {
       "type": "project",
       "path": "../Bitlush.AvlTree/Bitlush.AvlTree.csproj",
@@ -22,7 +84,8 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "Bitlush.AvlTree >= 1.0.0"
+      "Bitlush.AvlTree >= 1.0.0",
+      "Prevu.LiveCharts.Wpf.NetCore3 >= 0.9.9"
     ]
   },
   "packageFolders": {
@@ -31,11 +94,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
+      "projectUniqueName": "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
       "projectName": "ScheduleUI",
-      "projectPath": "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
+      "projectPath": "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\obj\\",
+      "outputPath": "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -52,8 +115,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\user\\Desktop\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj": {
-              "projectPath": "C:\\Users\\user\\Desktop\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj"
+            "C:\\Users\\user\\source\\repos\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj": {
+              "projectPath": "C:\\Users\\user\\source\\repos\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj"
             }
           }
         }
@@ -67,6 +130,12 @@
     "frameworks": {
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
+        "dependencies": {
+          "Prevu.LiveCharts.Wpf.NetCore3": {
+            "target": "Package",
+            "version": "[0.9.9, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,25 +10,24 @@ namespace ScheduleUI.Models
     public class ScheduleModel
     {
 
-        private int _layer;
+        public int Layer { get; set; }
 
         private int _countCompleted;
         private int _countPending;
         private int _countDisabled;
-        private readonly SolidColorBrush[] customBrush = { new((Color)ColorConverter.ConvertFromString("#50a31d")),
-                                                           new((Color)ColorConverter.ConvertFromString("#c79300")),
-                                                           new((Color)ColorConverter.ConvertFromString("#8d8cb1"))};
+        private static Color[] customColor = { (Color)ColorConverter.ConvertFromString("#50a31d"),
+                                       (Color)ColorConverter.ConvertFromString("#c79300"),
+                                       (Color)ColorConverter.ConvertFromString("#8d8cb1")};
 
-        private AvlTree<DateTime, TimeBlock> timeBlocks = new AvlTree<DateTime, TimeBlock>();
+        private readonly SolidColorBrush[] customBrush = { new(customColor[0]),
+                                                           new(customColor[1])};
 
-        private Grid grid = new();
+        private AvlTree<DateTime, TimeBlock> timeBlocks = new();
 
-        public Grid Start(ref int layer, ref string completed, ref string pending, ref string disabled)
+        public void CreateGrid(VirtualCanvasDemo.VirtualizedCanvas virtualizedCanvas)
         {
-            grid.Children.Clear();
-            grid.RowDefinitions.Clear();
             timeBlocks.Clear();
-            _layer = 0;
+            Layer = 0;
 
             _countCompleted = 0;
             _countPending = 0;
@@ -40,32 +38,39 @@ namespace ScheduleUI.Models
             foreach (AvlNode<DateTime, TimeBlock> blockNode in timeBlocks)
             {
                 TimeBlock block = blockNode.Value;
-                AddBlockToGrid(block);
+                AddBlockToGrid(block, virtualizedCanvas);
             }
-
-            PrintBlockCountsByType(ref pending, ref disabled, ref completed);
-            layer = _layer;
-            return grid;
         }
 
         private void CreateTimeBlocks()
         {
-            Random random = new();
+            var random = new Random();
             var startDate = DateTime.Now;
-            var num = random.Next(100, 1000);
             for (int i = 0; i < 2000; i++)
             {
                 var startHour = random.Next(0, 23);
-                var startMinute = random.Next(0, 59);
                 var endHour = random.Next(startHour, 24);
+                var startMinute = random.Next(0, 59);
                 var endMinute = random.Next(startMinute, 60);
 
+                if (endHour - startHour == 0)
+                {
+                    while (endMinute - startMinute < 35)
+                    {
+                        startMinute = random.Next(0, 59);
+                        endMinute = random.Next(startMinute, 60);
+
+                    }
+                }
+               
                 var daysToAdd = random.Next(0, 4);
                 var date = startDate.AddDays(daysToAdd);
 
-                var description = $"Event {i + 1}";
+                var startTime = new DateTime(date.Year, date.Month, date.Day, startHour, startMinute, 0);
+                var endTime = new DateTime(date.Year, date.Month, date.Day, endHour, endMinute, 0);
+                var description = $"{startTime:dd.MM.yyyy HH:mm} - {endTime:HH:mm} Event {i + 1}";
                 ElementType type = (ElementType)random.Next(Enum.GetValues(typeof(ElementType)).Length);
-                var block = new TimeBlock(type, new DateTime(date.Year, date.Month, date.Day, startHour, startMinute, 0), new DateTime(date.Year, date.Month, date.Day, endHour, endMinute, 0), description);
+                var block = new TimeBlock(type, startTime, endTime, description);
                 timeBlocks.Insert(block.StartTime, block);
             }
         }
@@ -84,59 +89,47 @@ namespace ScheduleUI.Models
             return minStartTime;
         }
 
-        private void AddBlockToGrid(TimeBlock block)
+        public double FindMaxX()
         {
-            GetAvailableLayer(block);
+            DateTime maxEndTime = DateTime.MinValue;
+            foreach (AvlNode<DateTime, TimeBlock> blockNode in timeBlocks)
+            {
+                TimeBlock block = blockNode.Value;
+
+                if (block.EndTime > maxEndTime)
+                {
+                    maxEndTime = block.EndTime;
+                }
+            }
+            return GetMaxX(maxEndTime);
+        }
+
+        private double GetMaxX(DateTime maxEndTime)
+        {
             var minStartTime = FindMinStartTime();
-            var x = (block.StartTime - minStartTime).TotalMinutes / 10 * ConfigConstants.MinutesInHour;
+            return (maxEndTime - minStartTime).TotalMinutes / 10 * ConfigConstants.MinutesInHour;
+        }
+
+        public void AddBlockToGrid(TimeBlock block, VirtualCanvasDemo.VirtualizedCanvas virtualizedCanvas)
+        {
+            var y =  GetAvailableLayer(block);
+            var minStartTime = FindMinStartTime();
+            var x1 = ((block.StartTime - minStartTime).TotalMinutes / 10 * ConfigConstants.MinutesInHour) + 2;
             var width = GetBlockWidth(block);
 
-            double opacity = 1;
-            SolidColorBrush customBrush = ColorType(block.Type, ref opacity);
+            SolidColorBrush customBrush = ColorType(block.Type);
 
-            Rectangle rectangle = new()
-            {
-                Width = width,
-                Height = ConfigConstants.RowHeight - 2,
-                Fill = customBrush,
-                Stroke = Brushes.Black,
-                StrokeThickness = 2,
-                Opacity = opacity,
-            };
-
-            var dateTimeText = $"{block.StartTime:dd.MM.yyyy HH:mm} - {block.EndTime:HH:mm} {block.Description}";
-
-            TextBlock textBlock = new()
-            {
-                Text = dateTimeText,
-                TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(7, 2, 2, 2),
-                Opacity = opacity,
-            };
-
-            Grid gridItem = new()
-            {
-                Margin = new Thickness(x, 0, 0, 0),
-            };
-
-            gridItem.Children.Add(rectangle);
-            gridItem.Children.Add(textBlock);
-
-            gridItem.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(width) });
-
-            Grid.SetRow(gridItem, block.Layer);
-
-            grid.Children.Add(gridItem);
+            virtualizedCanvas.Generate(width, x1, y, customBrush, block);
         }
 
         private double GetBlockWidth(TimeBlock block)
         {
             var widthInMinutes = block.Duration;
-            var widthInPixels = widthInMinutes / 10 * ConfigConstants.MinutesInHour;
-            return widthInPixels.TotalMinutes;
+            var widthInPixels = widthInMinutes.TotalMinutes / 10 * ConfigConstants.MinutesInHour;
+            return widthInPixels;
         }
 
-        private void GetAvailableLayer(TimeBlock block)
+        private int GetAvailableLayer(TimeBlock block)
         {
             var minStartTime = FindMinStartTime();
             var x = block.StartTime.Subtract(minStartTime).TotalMinutes;
@@ -173,21 +166,17 @@ namespace ScheduleUI.Models
                 if (layerAvailable)
                 {
                     block.Layer = layer;
-                    if (layer >= _layer)
+                    if (layer >= Layer)
                     {
-                        _layer++;
-                        RowDefinition rowDefinition = new()
-                        {
-                            Height = new GridLength(ConfigConstants.RowHeight)
-                        };
-                        grid.RowDefinitions.Add(rowDefinition);
+                        Layer++;
                     }
                     break;
                 }
             }
+            return layer * ConfigConstants.RowHeight;
         }
 
-        private SolidColorBrush ColorType(ElementType type, ref double opacity)
+        private SolidColorBrush ColorType(ElementType type)
         {
             switch (type)
             {
@@ -199,13 +188,15 @@ namespace ScheduleUI.Models
                     _countPending++;
                     return customBrush[1];
             }
-            opacity = 0.6;
+            double opacity = 0.6;
             _countDisabled++;
             Random random = new();
-            return customBrush[random.Next(1, 3)];
+            SolidColorBrush colorBrush = new(customColor[random.Next(1, 3)]);
+            colorBrush.Opacity = opacity;
+            return colorBrush;
         }
 
-        private void PrintBlockCountsByType(ref string pending, ref string jeopardy, ref string completed)
+        public void NumberOfTypes(ref string pending, ref string jeopardy, ref string completed)
         {
             pending = $"{_countPending} Pending";
             jeopardy = $"{_countDisabled} Jeopardy";

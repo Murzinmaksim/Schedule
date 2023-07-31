@@ -8,12 +8,29 @@
     ".NETCoreApp,Version=v5.0": {
       "ScheduleUI/1.0.0": {
         "dependencies": {
-          "Bitlush.AvlTree": "1.0.0"
+          "Bitlush.AvlTree": "1.0.0",
+          "Prevu.LiveCharts.Wpf.NetCore3": "0.9.9"
         },
         "runtime": {
           "ScheduleUI.dll": {}
         }
       },
+      "Prevu.LiveCharts.Wpf.NetCore3/0.9.9": {
+        "dependencies": {
+          "System.Data.DataSetExtensions": "4.5.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/LiveCharts.Wpf.dll": {
+            "assemblyVersion": "0.9.9.0",
+            "fileVersion": "0.9.9.0"
+          },
+          "lib/netcoreapp3.1/LiveCharts.dll": {
+            "assemblyVersion": "0.9.7.0",
+            "fileVersion": "0.9.7.0"
+          }
+        }
+      },
+      "System.Data.DataSetExtensions/4.5.0": {},
       "Bitlush.AvlTree/1.0.0": {
         "runtime": {
           "Bitlush.AvlTree.dll": {}
@@ -26,6 +43,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Prevu.LiveCharts.Wpf.NetCore3/0.9.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uTH7aRBHJh8BXX60tkgLDw+oeTCTYSdpwqF0dVR3BAW0l6rA6+F37cqgT8WAZ444OWMxGNgVeCKg8WA/ZPLr3g==",
+      "path": "prevu.livecharts.wpf.netcore3/0.9.9",
+      "hashPath": "prevu.livecharts.wpf.netcore3.0.9.9.nupkg.sha512"
+    },
+    "System.Data.DataSetExtensions/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-221clPs1445HkTBZPL+K9sDBdJRB8UN8rgjO3ztB0CQ26z//fmJXtlsr6whGatscsKGBrhJl5bwJuKSA8mwFOw==",
+      "path": "system.data.datasetextensions/4.5.0",
+      "hashPath": "system.data.datasetextensions.4.5.0.nupkg.sha512"
     },
     "Bitlush.AvlTree/1.0.0": {
       "type": "project",

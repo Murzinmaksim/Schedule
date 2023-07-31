@@ -24,17 +24,15 @@
             <Border Background="#636f7d" CornerRadius="10" Grid.RowSpan="5" />
 
             <Grid Grid.Row="3" Margin="0,0,0,15" >
-                <Grid x:Name="grid6" >
-                </Grid>
                 <ContentControl Content="{Binding BackgroundGrid}" />
             </Grid>
 
             <Border Grid.Row="1" Background="#adafb3"  BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-1"/>
-            <local:RulerControl Grid.Row="1" VerticalAlignment="Stretch" Margin="17,0,17,0" Grid.RowSpan="3"/>
+            <local:RulerControl Grid.Row="1" VerticalAlignment="Stretch" Margin="17.5,0,16.5,0" Grid.RowSpan="3"/>
 
             <Grid x:Name="panel" Grid.Row="2" Background="#bdc1c7" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="17" />
+                    <ColumnDefinition Width="18" />
                     <ColumnDefinition Width="23" />
                     <ColumnDefinition Width="75" />
                     <ColumnDefinition Width="20" />
@@ -45,6 +43,7 @@
                     <ColumnDefinition Width="180" />
                     <ColumnDefinition Width="17" />
                 </Grid.ColumnDefinitions>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" />
                 <Image Source="/Views/Pending.jpg" Grid.Column="1" Margin="3,5,2,5" />
                 <TextBlock Text="{Binding Pending}" Grid.Column="2" Margin="2,4,0,0" />
                 <Image Source="/Views/Jeopardy.jpg" Grid.Column="3" Margin="2,5,2,5" />
@@ -53,15 +52,15 @@
                 <TextBlock Text="{Binding Completed}" Grid.Column="6" Margin="2,4,0,0" />
                 <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="10" />
                 <Button Style="{StaticResource CustomButtonStyle}" Grid.Column="8" Content="Generate Schedule" Margin="47,3,7,3" Command="{Binding ButtonCommand}" />
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="9" />
             </Grid>
 
             <Border Grid.Row="3" Background="#5f5f5f" Width="18" Height="17" CornerRadius="0,0,0,9" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" />
+       
+            <ContentControl Grid.Row="3" Content="{Binding VirtualizedCanvasContent}" />
+            <Border Grid.Row="3" Background="#474747" Width="17" Height="17" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
             <Border Grid.Row="3" Background="#5f5f5f" Width="17" Height="17" CornerRadius="0,0,9,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" />
-
-            <ScrollViewer Grid.Row="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  >
-                <ContentControl Content="{Binding ScheduleGrid}" />
-            </ScrollViewer>
-
+            
             <local:YellowStripeControl Grid.Row="1" Grid.RowSpan="3" Margin="17,0,17,0"/>
 
             <Border  BorderBrush="Black" BorderThickness="1" CornerRadius="9" Grid.RowSpan="5" />

@@ -10,9 +10,3 @@ C:\Users\user\source\repos\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.cs
 C:\Users\user\source\repos\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.dll
 C:\Users\user\source\repos\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.pdb
-C:\Users\user\Desktop\Schedule\Bitlush.AvlTree\bin\Debug\Bitlush.AvlTree.dll
-C:\Users\user\Desktop\Schedule\Bitlush.AvlTree\bin\Debug\Bitlush.AvlTree.pdb
-C:\Users\user\Desktop\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.csproj.AssemblyReference.cache
-C:\Users\user\Desktop\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.csproj.CoreCompileInputs.cache
-C:\Users\user\Desktop\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.dll
-C:\Users\user\Desktop\Schedule\Bitlush.AvlTree\obj\Debug\Bitlush.AvlTree.pdb

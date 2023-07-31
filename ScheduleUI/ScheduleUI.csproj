@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Prevu.LiveCharts.Wpf.NetCore3" Version="0.9.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Bitlush.AvlTree\Bitlush.AvlTree.csproj" />
   </ItemGroup>
 

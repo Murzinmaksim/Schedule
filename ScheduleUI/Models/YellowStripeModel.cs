@@ -23,8 +23,8 @@ namespace ScheduleUI.Models
                 new Point(stripeX - 8, 1),
                 new Point(stripeX + 8, 1),
                 new Point(stripeX + 1, 7),
-                new Point(stripeX + 1, actualHeight - 17),
-                new Point(stripeX - 1, actualHeight - 17),
+                new Point(stripeX + 1, actualHeight - 16.5),
+                new Point(stripeX - 1, actualHeight - 16.5),
                 new Point(stripeX - 1, 7),
             };
 

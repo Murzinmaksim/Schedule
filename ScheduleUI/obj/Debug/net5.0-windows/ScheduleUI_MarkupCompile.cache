@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\user\Desktop\Schedule\ScheduleUI\obj\Debug\net5.0-windows\
+C:\Users\user\source\repos\Schedule\ScheduleUI\obj\Debug\net5.0-windows\
 ScheduleUI
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\user\Desktop\Schedule\ScheduleUI\App.xaml
-51527636320
+C:\Users\user\source\repos\Schedule\ScheduleUI\App.xaml
+6391952046
 
-16-389033052
-194-1658468965
-Styles\ButtonGenerateSchedule.xaml;Styles\ScrollviewStyles.xaml;Views\MainWindow.xaml;Views\RulerControl.xaml;Views\YellowStripeControl.xaml;
+401578834481
+19632009513
+Models\VirtualCanvasDemo\VirtualizedCanvas.xaml;Styles\ButtonGenerateSchedule.xaml;Styles\ScrollviewStyles.xaml;Views\MainWindow.xaml;Views\RulerControl.xaml;Views\YellowStripeControl.xaml;
 
 False
 

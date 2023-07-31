@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\ScheduleUI.csproj": {}
+    "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\ScheduleUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj": {
+    "C:\\Users\\user\\source\\repos\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj",
         "projectName": "Bitlush.AvlTree",
-        "projectPath": "C:\\Users\\user\\Desktop\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj",
         "frameworks": {
           "net452": {
             "projectReferences": {}
@@ -19,14 +19,14 @@
         "net452": {}
       }
     },
-    "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\ScheduleUI.csproj": {
+    "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\ScheduleUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
         "projectName": "ScheduleUI",
-        "projectPath": "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,8 +43,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\user\\Desktop\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj": {
-                "projectPath": "C:\\Users\\user\\Desktop\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj"
+              "C:\\Users\\user\\source\\repos\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\Schedule\\Bitlush.AvlTree\\Bitlush.AvlTree.csproj"
               }
             }
           }
@@ -58,6 +58,12 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "Prevu.LiveCharts.Wpf.NetCore3": {
+              "target": "Package",
+              "version": "[0.9.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

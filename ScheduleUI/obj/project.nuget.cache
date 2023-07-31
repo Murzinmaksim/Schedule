@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "zHOuD8JjO8JQ++wshj6InDstSWt9fqNwkXM+zmTqAKVcUekNFTkz8FD+2cUwFwNRItz/gREDtj6QaMsZ1g7bVQ==",
+  "dgSpecHash": "fNsbXbR4JTuzyYKzftUO8xsvazc4/RZBxDiFvWhICkj54PMWco11lVW32pPbDTQvKabXcGtEsE7gDMng/Jitqg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\user\\source\\repos\\Schedule\\ScheduleUI\\ScheduleUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\prevu.livecharts.wpf.netcore3\\0.9.9\\prevu.livecharts.wpf.netcore3.0.9.9.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
