@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Completed.jpg" />
+    <None Remove="Views\Jeopardy.jpg" />
+    <None Remove="Views\Pending.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bitlush.AvlTree\Bitlush.AvlTree.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Completed.jpg" />
+    <Resource Include="Views\Jeopardy.jpg" />
+    <Resource Include="Views\Pending.jpg" />
+  </ItemGroup>
+
+</Project>

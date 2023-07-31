@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33328.57
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleUI", "ScheduleUI.csproj", "{D289E161-B95D-419F-8B0E-ED492BAEF980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitlush.AvlTree", "..\Bitlush.AvlTree\Bitlush.AvlTree.csproj", "{A14B4C98-27C7-421F-BB43-98BA24B55AF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D289E161-B95D-419F-8B0E-ED492BAEF980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D289E161-B95D-419F-8B0E-ED492BAEF980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D289E161-B95D-419F-8B0E-ED492BAEF980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D289E161-B95D-419F-8B0E-ED492BAEF980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A14B4C98-27C7-421F-BB43-98BA24B55AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A14B4C98-27C7-421F-BB43-98BA24B55AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A14B4C98-27C7-421F-BB43-98BA24B55AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A14B4C98-27C7-421F-BB43-98BA24B55AF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {427B9EFA-12B9-43D3-8B0A-87973B2F9FAA}
+	EndGlobalSection
+EndGlobal
